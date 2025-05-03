@@ -1,0 +1,1 @@
+#veritabanında tutulacak tablolar oluşturulacak. Kolonlar vs.
