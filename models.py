@@ -2,20 +2,13 @@
 from sqlalchemy.orm import relationship
 from database import Base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime, Table
+from datetime import datetime
 
-<<<<<<< HEAD
 # Malzeme ve tarif arasındaki ilişki tablosu
 material_recipe = Table('material_recipe',
     Base.metadata,
     Column('material_id', Integer, ForeignKey('materials.id'), primary_key=True),
     Column('recipe_id', Integer, ForeignKey('recipes.id'), primary_key=True)
-=======
-recipe_materials = Table(  #tarif ve malzemeler arasında çoka-çok ilişki
-    'recipe_materials',
-    Base.metadata,
-    Column('recipe_id', Integer, ForeignKey('recipes.id')),
-    Column('material_id', Integer, ForeignKey('materials.id'))
->>>>>>> ff0c3125156651163ff1273fa1882febf018aba1
 )
 
 class Materials(Base):
@@ -24,15 +17,11 @@ class Materials(Base):
     id = Column(Integer, primary_key=True, index=True)
     material_name = Column(String, nullable=False)
     isExpiring = Column(Boolean, default=False)
-    expirationDate = Column(DateTime)
+    ExpirationDate = Column(DateTime)
     owner_id = Column(Integer, ForeignKey('users.id')) #Malzemeler hangi kullanıcıya ait olduğunu
                                                        #Yabancı anahtar kullanarak ilişki kurduk. Bire çok ilişki
     owner = relationship("User", backref="materials")
-<<<<<<< HEAD
     recipes = relationship("Recipe", secondary=material_recipe, back_populates="materials")
-=======
-    recipes = relationship("Recipe", secondary="recipe_materials", back_populates="materials")
->>>>>>> ff0c3125156651163ff1273fa1882febf018aba1
 
 class Recipe(Base):
     __tablename__ = 'recipes'
@@ -42,13 +31,10 @@ class Recipe(Base):
     description = Column(String)            # Tarifin açıklaması
     instructions = Column(String)           # Nasıl yapılır?
     created_by = Column(Integer, ForeignKey('users.id'))  # Tarifi ekleyen kullanıcı
+    created_at = Column(DateTime, default=datetime.now)   # Tarifin oluşturulma tarihi
 
     user = relationship("User", backref="recipes")  # Bire-çok ilişki
-<<<<<<< HEAD
     materials = relationship("Materials", secondary=material_recipe, back_populates="recipes")
-=======
-    materials = relationship("Materials", secondary="recipe_materials", back_populates="recipes")
->>>>>>> ff0c3125156651163ff1273fa1882febf018aba1
 
 class User(Base):
     __tablename__ = 'users'
