@@ -7,3 +7,8 @@ langchain-google-genai==1.0.10
 markdown==3.7
 bs4==0.0.2
 alembic==1.13.2
+cryptography==43.0.0
+passlib==1.7.4
+psycopg2-binary==2.9.9
+python-jose==3.3.0
+python-multipart==0.0.9
