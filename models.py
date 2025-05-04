@@ -1,8 +1,14 @@
 #veritabanında tutulacak tablolar oluşturulacak. Kolonlar vs.
 from sqlalchemy.orm import relationship
 from database import Base
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime, Table
 
+recipe_materials = Table(  #tarif ve malzemeler arasında çoka-çok ilişki
+    'recipe_materials',
+    Base.metadata,
+    Column('recipe_id', Integer, ForeignKey('recipes.id')),
+    Column('material_id', Integer, ForeignKey('materials.id'))
+)
 
 class Materials(Base):
     __tablename__ ='materials'
@@ -10,11 +16,11 @@ class Materials(Base):
     id = Column(Integer, primary_key=True, index=True)
     material_name = Column(String, nullable=False)
     isExpiring = Column(Boolean, default=False)
-    ExpirationDate = Column(DateTime)
+    expirationDate = Column(DateTime)
     owner_id = Column(Integer, ForeignKey('users.id')) #Malzemeler hangi kullanıcıya ait olduğunu
                                                        #Yabancı anahtar kullanarak ilişki kurduk. Bire çok ilişki
     owner = relationship("User", backref="materials")
-    recipes = relationship("Recipe",back_populates="materials")
+    recipes = relationship("Recipe", secondary="recipe_materials", back_populates="materials")
 
 class Recipe(Base):
     __tablename__ = 'recipes'
@@ -26,7 +32,7 @@ class Recipe(Base):
     created_by = Column(Integer, ForeignKey('users.id'))  # Tarifi ekleyen kullanıcı
 
     user = relationship("User", backref="recipes")  # Bire-çok ilişki
-    materials = relationship("Materials", back_populates="recipes")
+    materials = relationship("Materials", secondary="recipe_materials", back_populates="recipes")
 
 class User(Base):
     __tablename__ = 'users'
