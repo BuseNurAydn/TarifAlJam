@@ -54,3 +54,36 @@ async def create_recipe_with_ai(material_list: MaterialList, db: db_dependency):
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Tarif oluşturulurken bir hata oluştu: {str(e)}")
+
+@router.get("/", response_model=List[RecipeResponse])
+async def get_recipes(db: db_dependency):
+   
+    recipes = db.query(Recipe).all()
+    return recipes
+
+@router.get("/{recipe_id}", response_model=RecipeResponse)
+async def get_recipe(recipe_id: int, db: db_dependency):
+   
+    recipe = db.query(Recipe).filter(Recipe.id == recipe_id).first()
+    if recipe is None:
+        raise HTTPException(status_code=404, detail="Tarif bulunamadı")
+    return recipe
+
+@router.get("/search/{keyword}", response_model=List[RecipeResponse])
+async def search_recipes(keyword: str, db: db_dependency):
+   
+    recipes = db.query(Recipe).filter(
+        (Recipe.title.ilike(f"%{keyword}%")) | 
+        (Recipe.description.ilike(f"%{keyword}%"))
+    ).all()
+    return recipes
+
+@router.get("/by-material/{material_name}", response_model=List[RecipeResponse])
+async def get_recipes_by_material(material_name: str, db: db_dependency):
+   
+    material = db.query(Materials).filter(Materials.material_name == material_name).first()
+    if material is None:
+        raise HTTPException(status_code=404, detail="Malzeme bulunamadı")
+    
+    recipes = material.recipes
+    return recipes
