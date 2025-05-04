@@ -1,8 +1,14 @@
 #veritabanında tutulacak tablolar oluşturulacak. Kolonlar vs.
 from sqlalchemy.orm import relationship
 from database import Base
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime, Table
 
+# Malzeme ve tarif arasındaki ilişki tablosu
+material_recipe = Table('material_recipe',
+    Base.metadata,
+    Column('material_id', Integer, ForeignKey('materials.id'), primary_key=True),
+    Column('recipe_id', Integer, ForeignKey('recipes.id'), primary_key=True)
+)
 
 class Materials(Base):
     __tablename__ ='materials'
@@ -14,7 +20,7 @@ class Materials(Base):
     owner_id = Column(Integer, ForeignKey('users.id')) #Malzemeler hangi kullanıcıya ait olduğunu
                                                        #Yabancı anahtar kullanarak ilişki kurduk. Bire çok ilişki
     owner = relationship("User", backref="materials")
-    recipes = relationship("Recipe",back_populates="materials")
+    recipes = relationship("Recipe", secondary=material_recipe, back_populates="materials")
 
 class Recipe(Base):
     __tablename__ = 'recipes'
@@ -26,7 +32,7 @@ class Recipe(Base):
     created_by = Column(Integer, ForeignKey('users.id'))  # Tarifi ekleyen kullanıcı
 
     user = relationship("User", backref="recipes")  # Bire-çok ilişki
-    materials = relationship("Materials", back_populates="recipes")
+    materials = relationship("Materials", secondary=material_recipe, back_populates="recipes")
 
 class User(Base):
     __tablename__ = 'users'

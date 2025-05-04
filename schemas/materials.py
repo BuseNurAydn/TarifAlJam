@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Optional
 
 class MaterialCreate(BaseModel):
-    materials_name: str
+    material_name: str
     isExpiring: Optional[bool] = False
     ExpirationDate: Optional[datetime] = None
 
