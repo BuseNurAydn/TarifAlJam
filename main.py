@@ -12,10 +12,7 @@ from fastapi.openapi.utils import get_openapi
 
 app = FastAPI()
 
-# Static ve templates klasörleri
-script_dir = os.path.dirname(__file__)
-st_abs_file_path = os.path.join(script_dir, "static")
-app.mount("/static", StaticFiles(directory=st_abs_file_path), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static") #static klasörünü ana app'e tanıttık
 
 templates = Jinja2Templates(directory="templates")
 
@@ -25,10 +22,18 @@ app.include_router(recipe_router)
 
 Base.metadata.create_all(bind=engine) #veritabanı yoksa oluşturur -> tarifai_app.db
 
-# Ana sayfa
+# app biri girerse direk giriş yapa yönlendirdik
 @app.get("/", response_class=HTMLResponse)
 def get_home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/auth/login", response_class=HTMLResponse)
+async def login_page(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@app.get("/auth/register", response_class=HTMLResponse)
+async def register_page(request: Request):
+    return templates.TemplateResponse("register.html", {"request": request})
 
 def custom_openapi():
     if app.openapi_schema:

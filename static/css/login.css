@@ -4,7 +4,7 @@ body {
     font-family: sans-serif;
     background-color: #f5f5f5;
   }
-  
+
   .form-container {
     width: 340px;
     margin: 100px auto;
@@ -13,14 +13,14 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-  
+
   label {
     display: block;
     margin-top: 10px;
     margin-bottom: 5px;
     color: #333;
   }
-  
+
   input[type="text"],
   input[type="password"] {
     width: 100%;
@@ -33,7 +33,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
   }
-  
+
   button {
     width: 100%;
     padding: 10px;
@@ -43,11 +43,11 @@ body {
     cursor: pointer;
     font-size: 16px;
   }
-  
+
   button:hover {
     background-color: #007acc;
   }
-  
+
   .register-link {
     margin-top: 15px;
     font-size: 14px;
@@ -60,4 +60,3 @@ body {
   .register-link a:hover {
     text-decoration: underline;
   }
-  

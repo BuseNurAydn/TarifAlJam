@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Request
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from datetime import timedelta
@@ -10,13 +10,25 @@ from services.auth_service import (
     create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES,
     get_current_active_user
 )
+from fastapi.templating import Jinja2Templates
 
 router = APIRouter(
     prefix="/auth",
     tags=["auth"]
 )
 
+templates = Jinja2Templates(directory="templates")
 db_dependency = Annotated[Session, Depends(get_db)]
+
+
+@router.get("/login-page")
+def render_login_page(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+
+@router.get("/register-page")
+def render_register_page(request: Request):
+    return templates.TemplateResponse("register.html", {"request": request})
 
 @router.post("/register", response_model=UserResponse)
 async def register_user(user: UserCreate, db: db_dependency):
