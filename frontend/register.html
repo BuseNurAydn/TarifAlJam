@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kayıt Ol</title>
+  <link rel="stylesheet" href="css/register.css" />
+</head>
+<body>
+
+  <div class="form-container">
+    <h3>Hesabınız yoksa lütfen kayıt olun !</h3>
+    
+    <form id="registerForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="username">Kullanıcı Adı</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">Ad</label>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Soyad</label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="role">Rol</label>
+          <input type="text" id="role" name="role" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Telefon</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Şifre</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Şifreyi Doğrula</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required />
+        </div>
+      </div>
+
+      <button type="submit">Kayıt Ol</button>
+    </form>
+
+    <p class="login-link">
+      Zaten hesabınız var mı? <a href="login.html">Giriş yap</a>
+    </p>
+  </div>
+
+  <script src="js/register.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b2cb2;
+    padding: 1rem 3rem;
+    color: white;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: semibold;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+.container {
+    width: 40%;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  
+  .input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .input-section input {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .input-section button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #1e90ff;
+    border: none;
+    border-radius: 8px
+  }
+  
+  .malzeme-listesi {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .malzeme-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .malzeme-item span {
+    flex: 1;
+  }
+  
+  .malzeme-item button {
+    margin-left: 10px;
+    background-color: rgb(71, 66, 66);
+    color: white;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+  }
+  
+  .oner-button {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .oner-button button {
+    background-color: #EB5B00;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  

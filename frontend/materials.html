@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Malzeme Ekle</title>
+  <link rel="stylesheet" href="css/materials.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css
+</head>"> 
+<body>
+    <nav class="navbar">
+        <div class="logo" style="font-weight: bold;">Yapay Zeka Tarif</div>
+        <ul class="nav-links">
+          <li><a href="index.html">Anasayfa</a></li>
+          <li><a href="recipes.html">Tarifler</a></li>
+          <li><a href="materials.html">Malzeme Ekle</a></li>
+          <li><a href="login.html">Giriş Yap</a></li>
+          <li><a href="register.html">Kayıt Ol</a></li>
+        </ul>
+      </nav> 
+    
+  <div class="container">
+    <h3>Malzeme Ekle</h3>
+
+    <div class="input-section">
+      <input type="text" id="malzemeInput" placeholder="Malzeme adı giriniz" />
+      <button onclick="malzemeEkle()"><i style="padding-right: 2px;" class="fa-solid fa-plus"></i>Ekle</button>
+    </div>
+
+    <h4> Girilen Malzemeler : </h4>
+    <div id="malzemeListesi" class="malzeme-listesi"></div>
+
+    <div class="oner-button">
+      <button onclick="tarifOner()">Tarif Önerisi Al</button>
+    </div>
+  </div>
+
+ 
+  <script src="js/materials.js"></script>
+</body>
+</html>
