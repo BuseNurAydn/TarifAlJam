@@ -1,15 +1,23 @@
 document.getElementById("loginForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    if (!usernameInput || !passwordInput) {
+        alert("Form öğeleri bulunamadı.");
+        return;
+    }
+
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
 
     if (!username || !password) {
         alert("Lütfen tüm alanları doldurun.");
         return;
     }
 
-    fetch("http://localhost:8000/token", {
+    fetch("/auth/token", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -27,11 +35,8 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         })
         .then(data => {
             if (data.access_token) {
-                // Token'ı localStorage ya da cookie'de saklayabilirsin
                 localStorage.setItem("token", data.access_token);
-
-                //  Giriş başarılıysa yönlendirme yap
-                window.location.href = "/";
+                window.location.href = "/home"; // Giriş başarılıysa anasayfaya yönlendir
             }
         })
         .catch(error => {
@@ -39,3 +44,4 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
             console.error(error);
         });
 });
+

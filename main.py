@@ -9,8 +9,18 @@ from routers.auth import router as auth_router
 from routers.materials import router as material_router
 from routers.recipe import router as recipe_router
 from fastapi.openapi.utils import get_openapi
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Geliştirme için "*" olabilir, prod'da sınırlı tut
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.mount("/static", StaticFiles(directory="static"), name="static") #static klasörünü ana app'e tanıttık
 
@@ -27,6 +37,11 @@ Base.metadata.create_all(bind=engine) #veritabanı yoksa oluşturur -> tarifai_a
 @app.get("/", response_class=HTMLResponse)
 def get_home(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
+
+@app.get("/home", response_class=HTMLResponse)
+async def get_home(request: Request):
+    # Giriş yapılmışsa anasayfaya yönlendirme
+    return templates.TemplateResponse("index.html", {"request": request})
 
 def custom_openapi():
     if app.openapi_schema:

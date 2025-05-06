@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 from database import SessionLocal
 from typing import Annotated, List
@@ -20,7 +20,13 @@ def get_db():
     finally:
         db.close()
 
+templates = Jinja2Templates(directory="templates")
 db_dependency = Annotated[Session, Depends(get_db)]
+
+
+@router.get("/material-page")
+def render_material_page(request: Request):
+    return templates.TemplateResponse("materials.html", {"request": request})
 
 @router.post("/", response_model=MaterialResponse)
 async def create_material(material: MaterialCreate, db: db_dependency):

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Malzeme Ekle</title>
-  <link rel="stylesheet" href="static/css/materials.css" />
+  <link rel="stylesheet" href="/static/css/materials.css?v=2" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,11 +15,12 @@
     <nav class="navbar">
         <div class="logo" style="font-weight: bold;">Yapay Zeka Tarif</div>
         <ul class="nav-links">
-          <li><a href="index.html">Anasayfa</a></li>
-          <li><a href="recipes.html">Tarifler</a></li>
-          <li><a href="materials.html">Malzeme Ekle</a></li>
+          <li><a href="/home">Anasayfa</a></li>
+          <li><a href="/recipes/recipe-page">Tarifler</a></li>
+          <li><a href="/materials/material-page">Malzeme Ekle</a></li>
         </ul>
       </nav>
+
 
   <div class="container">
     <h3>Malzeme Ekle</h3>
@@ -36,6 +37,6 @@
       <button onclick="tarifOner()">Tarif Önerisi Al</button>
     </div>
   </div>
-  <script src="static/js/materials.js"></script>
+  <script src="/static/js/materials.js"></script>
 </body>
 </html>

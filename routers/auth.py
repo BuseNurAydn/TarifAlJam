@@ -49,6 +49,10 @@ def render_login_page(request: Request):
 def render_register_page(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
 
+@router.get("/home")
+def render_home_page(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
 @router.post("/register", response_model=UserResponse)
 async def register_user(user: UserCreate, db: db_dependency):
     # Kullanıcı adı ve email kontrolü
@@ -97,7 +101,7 @@ async def login(
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token":access_token, "token_type": "bearer"}
 
 
 @router.get("/me", response_model=UserResponse)

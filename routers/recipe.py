@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 from database import SessionLocal
 from typing import Annotated, List
@@ -7,6 +7,7 @@ from schemas.recipe import RecipeCreate, RecipeResponse
 from services.gemini_service import generate_recipe
 from datetime import datetime
 from pydantic import BaseModel
+from fastapi.templating import Jinja2Templates
 
 router = APIRouter(
     prefix="/recipes",
@@ -20,10 +21,15 @@ def get_db():
     finally:
         db.close()
 
+templates = Jinja2Templates(directory="templates")
 db_dependency = Annotated[Session, Depends(get_db)]
 
 class MaterialList(BaseModel):
     materials: List[str]
+
+@router.get("/recipe-page")
+def render_recipe_page(request: Request):
+    return templates.TemplateResponse("recipes.html", {"request": request})
 
 @router.post("/generate", response_model=RecipeResponse)
 async def create_recipe_with_ai(material_list: MaterialList, db: db_dependency):
