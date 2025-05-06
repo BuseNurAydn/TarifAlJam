@@ -5,6 +5,7 @@ from typing import Annotated, List
 from models import Materials
 from schemas.materials import MaterialCreate, MaterialResponse
 from datetime import datetime
+from fastapi.templating import Jinja2Templates
 
 router = APIRouter(
     prefix="/materials",

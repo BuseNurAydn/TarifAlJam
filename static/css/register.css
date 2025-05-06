@@ -4,7 +4,12 @@ body {
     font-family: sans-serif;
     background-color: #f5f5f5;
   }
-
+  .nav {
+  height: 60px;
+  background-color: #1b2cb2;
+  padding: 1rem 3rem;
+  color: white;
+}
   .form-container {
     width: 540px;
     margin: 60px auto;

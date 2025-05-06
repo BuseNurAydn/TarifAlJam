@@ -4,14 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kayıt Ol</title>
-  <link rel="stylesheet" href="/static/css/register.css" />
+  <link rel="stylesheet" href="/static/css/register.css?v=2" />
 </head>
 <body>
+
+   <div class="nav">
+    <h3 id="logo">Yapay Zeka Tarif</h3>
+  </div>
 
   <div class="form-container">
     <h3>Hesabınız yoksa lütfen kayıt olun !</h3>
 
-    <form id="registerForm">
+    <form id="registerForm" action="/auth/register-form" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label for="email">Email</label>
@@ -64,7 +68,7 @@
     </form>
 
     <p class="login-link">
-      Zaten hesabınız var mı? <a href="/auth/login">Giriş yap</a>
+      Zaten hesabınız var mı? <a href="/auth/login-page">Giriş yap</a>
     </p>
   </div>
 

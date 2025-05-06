@@ -4,16 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Giriş Sayfası</title>
-  <link rel="stylesheet" href="/static/css/login.css" />
+  <link rel="stylesheet" href="/static/css/login.css?v=2" />
 </head>
 <body>
+  <div class="nav">
+    <h3 id="logo">Yapay Zeka Tarif</h3>
+  </div>
 
   <div class="form-container">
     <h4>Hesabınız var mı? Lütfen giriş yapın !</h4>
 
     <form id="loginForm">
-      <label for="email">Email</label>
-      <input type="text" id="email" name="email" required autocomplete="email" />
+      <label for="username">Kullanıcı Adı</label>
+      <input type="text" id="username" name="username" required />
 
       <label for="password">Şifre</label>
       <input type="password" id="password" name="password" required autocomplete="current-password" />
@@ -22,10 +25,10 @@
     </form>
 
     <p class="register-link">
-      Hesabınız yok mu? <a href="/auth/register">Kayıt olun</a>
+      Hesabınız yok mu? <a href="/auth/register-page">Kayıt olun</a>
     </p>
   </div>
 
-  <script src="static/js/login.js"></script>
+  <script src="/static/js/login.js"></script>
 </body>
 </html>

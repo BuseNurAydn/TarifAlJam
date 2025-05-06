@@ -20,20 +20,13 @@ app.include_router(auth_router)
 app.include_router(material_router)
 app.include_router(recipe_router)
 
+
 Base.metadata.create_all(bind=engine) #veritabanı yoksa oluşturur -> tarifai_app.db
 
-# app biri girerse direk giriş yapa yönlendirdik
+# app biri girerse direk logine yönlendirdik
 @app.get("/", response_class=HTMLResponse)
 def get_home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
-@app.get("/auth/login", response_class=HTMLResponse)
-async def login_page(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
-
-@app.get("/auth/register", response_class=HTMLResponse)
-async def register_page(request: Request):
-    return templates.TemplateResponse("register.html", {"request": request})
 
 def custom_openapi():
     if app.openapi_schema:
