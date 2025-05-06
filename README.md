@@ -1,13 +1,18 @@
 Projenin amacı: Evde olan malzemeleri değerlendirmek, gıda israfını önlemek ve yemek yapma sıkıntısını ortadan kaldırmak amaçlanmıştır. İsrafı önleyerek sürdürülebilirlik faaliyetlerine katkı sağlamak hedeflenmektedir.
 
-Kullanılan Teknolojiler:
 
-SQLite
+Projenin ekran görüntüleri:
 
-DBeaver veritabanı
+![api](images/api-1.png)
+![api](images/api-2.png)
+![api](images/api-3.png)
+![Login](images/login sayfası.png)
+![Register](images/Register sayfası.png)
+![Anasayfa](images/Anasayfa.png)
+![Malzeme ekleme](images/Malzeme ekleme sayfası.png)
+![Tarifler](images/Tarifler sayfası.png)
+![DB](images/db.png)
 
-Dependency Injection
-...
 
 
 
